@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'tnbtop.views.home', name='top_home'),
-    # url(r'^board/', include('tonbo.foo.urls')),
+    url(r'^board/', include('tonbo.tnbtop.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
