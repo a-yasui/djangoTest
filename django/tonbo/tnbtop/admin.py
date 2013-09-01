@@ -6,5 +6,17 @@ from django.contrib import admin
 from tnbtop.models import Board
 from tnbtop.models import Message
 
-admin.site.register(Board)
+
+class MessageInline(admin.StackedInline):
+    model = Message
+    extra = 1
+
+class BoardAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('板名',   {'fields': ['name']}),
+        # ('作成日', {'fields': ['create_at']}),
+    ]
+    inlines = [MessageInline]
+
+admin.site.register(Board, BoardAdmin)
 admin.site.register(Message)

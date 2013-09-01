@@ -11,13 +11,17 @@ class Board (models.Model):
     create_at = models.DateTimeField(auto_now=True)
     update_at = models.DateTimeField(auto_now=True, auto_now_add=True)
 
+    def __unicode__ (self):
+        return self.name
 
 class Message (models.Model):
     r""" 個々の投稿メッセージ
     """
     board = models.ForeignKey(Board)
-    parent = models.ForeignKey("self", null=True)
+    parent = models.ForeignKey("self", null=True, blank=True, default = None)
     message_text = models.TextField()
     ipaddress = models.IPAddressField()
     create_at = models.DateTimeField(auto_now=True)
 
+    def __unicode__ (self):
+        return self.message_text
