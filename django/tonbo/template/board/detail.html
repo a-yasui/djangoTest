@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<h1>{{ board.name }}</h1>
+
+<div class="">
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="/board/{{ board.pk }}/put/" method="post" class="form-horizontal">
+<fieldset>
+<legend>メッセージ投稿</legend>
+{% csrf_token %}
+<div class="control-group"><label for="idMessage">メッセージ</label><textarea name="message" id="idMessage" cols="50" rows="5"></textarea></div>
+<div class="control-group"><div class="controls"><input type="submit" value="作成" /></div></div>
+</fieldset>
+</form>
+
+</div>
+
+{% if top_message %}
+<div class="well">
+    <div class="">
+        <div>{{ top_message.number|add:1 }}. {{ top_message.create_at }}</div>
+    {{ top_message.message_text }}</div>
+</div>
+{% endif %}
+
+{% if messages %}
+<div class="">
+{% for message in messages %}
+    <div class="well">
+        <div>{{ message.number|add:1 }}. {{ message.create_at }}</div>
+    {{ message.message_text }}</div>
+{% endfor %}
+</div>
+{% endif %}
+
+
+</div>
+{% endblock %}

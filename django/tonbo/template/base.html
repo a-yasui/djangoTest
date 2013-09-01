@@ -1,7 +1,57 @@
+<!DOCTYPE html>
 <html>
 <head>
-</head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    
+    <!-- Styles -->
+    <link href="{{ MEDIA_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ MEDIA_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
 
+    <link rel="shortcut icon" href="{{ MEDIA_URL }}img/favicon.png">
+    <link rel="apple-touch-icon" href="{{ MEDIA_URL }}img/favicon.png">
+    <link rel="apple-touch-icon" sizes="500x500" href="{{ MEDIA_URL }}img/favicon.png">
+  
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style type="text/css">
+    .send {
+    background: none repeat scroll 0 0 #1189D9;
+    border: 0 none;
+    box-shadow: none;
+    color: #FFFFFF;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 70px 0 0;
+    padding: 8px 10px;
+    text-shadow: none;
+    text-transform: uppercase;
+    transition: background 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+    </style>
+</head>
 <body>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand">トンボ</a>
+    <ul class="nav">
+      <li class="active"><a href="/">Home</a></li>
+    </ul>
+  </div>
+</div>
+
+{% block content %}{% endblock %}
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
 </body>
 </html>
