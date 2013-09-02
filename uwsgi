@@ -16,14 +16,14 @@
 . /etc/rc.d/init.d/functions
  
 # Check for missing binaries (stale symlinks should not happen)
-UWSGI_BIN=/srv/www/py26/bin/uwsgi
+UWSGI_BIN=/srv/www/py27/bin/uwsgi
 test -x $UWSGI_BIN || { echo "$UWSGI_BIN not installed"; 
         if [ "$1" = "stop" ]; then exit 0;
         else exit 5; fi; }
  
 UWSGI_EMPEROR_MODE=true
 UWSGI_VASSALS="/srv/www/djangoTest/"
-UWSGI_OPTIONS="--enable-threads --logto /var/log/uwsgi/uwsgi.log"
+UWSGI_OPTIONS="--logto /var/log/uwsgi/uwsgi.log"
 lockfile=/var/lock/subsys/uwsgi
  
 UWSGI_OPTIONS="$UWSGI_OPTIONS --autoload"
