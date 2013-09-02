@@ -22,7 +22,7 @@ def home(request):
     r""" 最近更新されたボード一覧を表示させる """
 
     data = dict(
-        boards = Board.objects.all().order_by('-update_at')[]
+        boards = Board.objects.all().order_by('-update_at')
     )
     return render_to_response('board/index.html', data, context_instance=RequestContext(request))
 
