@@ -36,9 +36,7 @@ def create (request):
 
         if board.id:
             message = Message(board=board, message_text=request.POST['message'], ipaddress=request.META["REMOTE_ADDR"], number=0)
-
-            if message.is_valid():
-                message.save()
+            message.save()
 
         return HttpResponseRedirect("/board/{0}".format(board.id))
 
