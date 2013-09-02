@@ -1,5 +1,3 @@
-djangoTest
-==========
+# Django + Uwsgi + nginx in CentOS6
 
-django sample test
-あるはずなんだが…
+see: http://d.hatena.ne.jp/at_yasu/
