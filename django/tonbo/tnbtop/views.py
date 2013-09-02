@@ -15,6 +15,9 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
+# 表示件数（1件目を除く）
+DISPLAY_LIMIT = 10
+
 def index (request):
     return HttpResponseRedirect("/")
 
@@ -50,15 +53,20 @@ def display (request, board_id):
     count   = message.count()
     data = dict(
         board = board,
-        count = count
+        count = count,
+        display_count = count
     )
 
     if len(message) > 0:
         get_ptr = 0
-        if count > 30:
-            get_ptr = count-30
-        data["top_message"] = message[0]
-        data["messages"]    = message[get_ptr:]
+
+        # 10個以上メッセージがある時は、1件目を表示するが、
+        # 10個までない場合は、全件表示
+        if count > DISPLAY_LIMIT:
+            get_ptr = count-DISPLAY_LIMIT
+            data["top_message"] = message[0]
+        data["messages"] = message[get_ptr:]
+        data["display_count"] = count-get_ptr+1
 
     return render_to_response('board/detail.html', data,
                                context_instance=RequestContext(request))

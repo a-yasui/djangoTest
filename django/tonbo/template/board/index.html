@@ -3,30 +3,33 @@
 {% block content %}
 
 <div class="container">
+<h1>掲示板サンプル</h1>
 
-<h1>Test</h1>
-
-<div class="">
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<div class="row">
 
-<form action="/board/create" method="post" class="form-horizontal">
-<fieldset>
-<legend>新規にボードを作成</legend>
-{% csrf_token %}
-<div class="control-group"><label for="idName">ボード名</label><input type="text" name="name" value="" id="idName" /></div>
-<div class="control-group"><label for="idMessage">メッセージ</label><textarea name="message" id="idMessage" cols="50" rows="5"></textarea></div>
-<div class="control-group"><div class="controls"><input type="submit" value="作成" /></div></div>
-</fieldset>
-</form>
+    <div class="span3">
+        <div data-spy="affix">
+            <form action="/board/create" method="post" class="form-horizontal">
+            <fieldset>
+            <legend>新規にボードを作成</legend>
+            {% csrf_token %}
+            <div class="control-group"><label for="idName">ボード名</label><input type="text" name="name" value="" id="idName" /></div>
+            <div class="control-group"><label for="idMessage">メッセージ</label><textarea name="message" id="idMessage" cols="50" rows="5"></textarea></div>
+            <div class="control-group"><div class="controls"><input type="submit" value="作成" /></div></div>
+            </fieldset>
+            </form>
+        </div>
+    </div>
 
-{% if boards %}
-    {% for board in boards %}<span><a href="/board/{{ board.id }}/">{{ board.name }}</a></span>,&nbsp;{% endfor %}
-{% else %}
-    <p>まだ存在しないみたいです</p>
-{% endif %}
-</div>
 
-<div class="">
+    <div class="span9">
+    {% if boards %}
+        {% for board in boards %}<span><a href="/board/{{ board.id }}/">{{ board.name }}</a></span>,&nbsp;{% endfor %}
+    {% else %}
+        <p>まだ存在しないみたいです</p>
+    {% endif %}
+    </div>
 </div>
 
 

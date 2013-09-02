@@ -42,16 +42,15 @@
   <div class="navbar-inner">
     <a class="brand">トンボ</a>
     <ul class="nav">
-      <li class="active"><a href="/">Home</a></li>
+{%block nav%}<li class="active"><a href="/">Home</a></li>{%endblock%}
     </ul>
   </div>
 </div>
 
 {% block content %}{% endblock %}
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="//code.jquery.com/jquery.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
+{% block javascript%}{% endblock %}
 </body>
 </html>

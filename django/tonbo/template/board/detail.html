@@ -1,25 +1,46 @@
 {% extends "base.html" %}
 
-{% block content %}
+{%block nav%}
+<li><a href="/">Home</a></li>
+<li class="active"><a href="/board/{{ board.pk }}/">{{ board.name }}</a></li>
+{%endblock%}
 
+{% block javascript %}
+<script>
+$(function(){
+    $('#navbar').affix();
+});
+</script>
+{% endblock %}
+
+
+{% block content %}
 <div class="container">
 
-<h1>{{ board.name }}</h1>
 
-<div class="">
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="/board/{{ board.pk }}/put/" method="post" class="form-horizontal">
-<fieldset>
-<legend>メッセージ投稿</legend>
-{% csrf_token %}
-<div class="control-group"><label for="idMessage">メッセージ</label><textarea name="message" id="idMessage" cols="50" rows="5"></textarea></div>
-<div class="control-group"><div class="controls"><input type="submit" value="作成" /></div></div>
-</fieldset>
-</form>
+<div class="row">
+    <div class="span3">
+        <div data-spy="affix">
+            <h1>{{ board.name }}</h1>
+            <form action="/board/{{ board.pk }}/put/" method="post" class="form-horizontal">
+            <fieldset>
+            <legend>メッセージ投稿</legend>
+            {% csrf_token %}
+            <div class="control-group"><label for="idMessage">メッセージ</label><textarea name="message" id="idMessage" cols="50" rows="5"></textarea></div>
+            <div class="control-group"><div class="controls"><input type="submit" value="作成" /></div></div>
+            </fieldset>
+            </form>
 
-</div>
+            <div>
+                <span>表示件数: {{ display_count }} / {{ count }}</span>
+            </div>
+        </div>
 
+    </div>
+
+    <div class="span9">
 {% if top_message %}
 <div class="well">
     <div class="">
@@ -38,6 +59,7 @@
 </div>
 {% endif %}
 
+    </div>
 
 </div>
 {% endblock %}
